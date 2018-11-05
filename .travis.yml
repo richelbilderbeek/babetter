@@ -1,10 +1,6 @@
 language: r
 cache: packages
 
-os: 
-  - osx
-  - linux
-
 r_packages:
   - devtools
   - ggplot2
@@ -24,35 +20,11 @@ r_github_packages:
   - ropensci/spelling
 
 before_script:
-  - # Java
-  - # if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew cask install java; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R CMD javareconf; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R --quiet -e 'install.packages("rJava", type="source", repos="http://cran.us.r-project.org")'; fi
   - # Java 8
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -qq oracle-java8-installer; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install oracle-java8-set-default; fi
+  - sudo apt-get install -qq oracle-java8-installer
+  - sudo apt-get install oracle-java8-set-default
   - Rscript -e "beastier::install_beast2()"
 
 script:
   - Rscript scripts/test_brute_force_1.R
   #- travis_wait 30 Rscript scripts/test_brute_force_2_unlinked.R
-
-after_success:
-  # Do a CRAN build. No time :-(
-  #- cd scripts; ./build_cran
-  #- travis_wait 30 Rscript -e 'goodpractice::gp()'
-  # temporarily disabled due to CERT_UNTRUSTED
-  #- ./scripts/check_dead_links
-
-after_failure:
-  # - sudo Rscript install_this_r_package.R
-  # - Rscript -e 'library(beautier); testit::assert(has_beast2())'
-  - cat /home/travis/build/richelbilderbeek/beautier/..Rcheck/00install.out
-  - cat /home/travis/build/richelbilderbeek/beautier/..Rcheck/00check.log
-  - cd ~; find . | egrep "beast"
-  - cd ~; find . | egrep "\.log"
-  - cd ~; find . | egrep "\.trees"
-  - cd ~; find . | egrep "\.xml"
-  - cd ~; find . | egrep "\.xml\.state"
-  - cd ~; find . | egrep "\.fasta"
-  - cat /home/travis/build/richelbilderbeek/beautier/..Rcheck/tests/testthat/testthat.log
