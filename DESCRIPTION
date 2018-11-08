@@ -1,13 +1,40 @@
 Package: babetter
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
-Encoding: UTF-8
+Title: Check babette
+Version: 0.1
+Authors@R: c(
+  person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")),
+)
+Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+Description: 'babette' (<https://github.com/richelbilderbeek/babette>) 
+  is an R package to call 'BEAST2' (<http://www.beast2.org>) 
+  from R. 'BEAST2' is a widely used
+  Bayesian phylogenetic tool, that uses DNA/RNA/protein data
+  and many model priors to create a posterior of jointly estimated.
+  Because 'BEAST2' is very flexible, 'babette' needs to be flexible
+  as well. This package tests 'babette' under a wide range of options,
+  that are too time-consuming to add to the 'babette' tests. 
+License: GPL-3 | file LICENSE
 LazyData: true
-Suggests: 
+RoxygenNote: 6.1.0
+VignetteBuilder: knitr
+URL: https://github.com/richelbilderbeek/babetter
+BugReports: https://github.com/richelbilderbeek/babetter/issues
+Imports:
+    babette,
+    beautier,
+    beastier,
+    tracerer,
+    testit
+Suggests:
+    devtools,
+    ggplot2,
+    hunspell,
+    knitr,
+    lintr,
+    mauricer,
+    nLTT,
+    rmarkdown,
+    spelling,
     testthat
+Language: en-US
+Encoding: UTF-8
