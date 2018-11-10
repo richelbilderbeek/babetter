@@ -51,8 +51,9 @@ test_that("use", {
   seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
   set.seed(seed)
 
-  # 30 attempts per minute, use one hour
-  for (i in seq(1, 30 * 60)) {
+  # 1 attempts per minute, use ten minutes
+  for (i in seq(1, 1 * 10)) {
+    print(i)
     ok <- create_random()
     if (ok == FALSE) {
       status <- 1
