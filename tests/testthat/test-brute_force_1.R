@@ -2,12 +2,13 @@ context("test-brute_force_1")
 
 test_that("all combinations", {
 
+  print("all combinations") # Produce output for Travis
   input_fasta_filename <- beautier:::get_beautier_path("anthus_aco.fas")
 
   for (site_model in beautier:::create_site_models()) {
     for (clock_model in beautier:::create_clock_models()) {
       for (tree_prior in beautier:::create_tree_priors()) {
-
+        print(i)
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
           input_filenames = input_fasta_filename,
@@ -30,7 +31,9 @@ test_that("all combinations", {
   }
 })
 
-test_that("monophyletic MRCA prior", {
+test_that("monophyletic MRCA prior with distr", {
+
+  print("monophyletic MRCA prior with distr") # Produce output for Travis
 
   input_fasta_filename <- beautier:::get_beautier_path("anthus_aco.fas")
   mrca_prior <- beautier::create_mrca_prior(
@@ -69,7 +72,9 @@ test_that("monophyletic MRCA prior", {
   }
 })
 
-test_that("non-monophyletic MRCA prior", {
+test_that("non-monophyletic MRCA prior with distr", {
+
+  print("non-monophyletic MRCA prior with distr") # Produce output for Travis
 
   input_fasta_filename <- beautier:::get_beautier_path("anthus_aco.fas")
   mrca_prior <- beautier::create_mrca_prior(
