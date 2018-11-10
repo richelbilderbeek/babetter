@@ -61,5 +61,4 @@ test_that("use", {
     }
     expect_true(ok)
   }
-  expect_true(1 == 2)
 })
