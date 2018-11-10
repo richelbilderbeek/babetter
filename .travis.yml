@@ -12,7 +12,7 @@ r_github_packages:
   - jimhester/lintr
   - richelbilderbeek/babette
   - richelbilderbeek/beastier
-  - richelbilderbeek/beautier
+  - richelbilderbeek/beautier@develop
   - richelbilderbeek/mauricer
   - richelbilderbeek/tracerer
   - MangoTheCat/goodpractice
