@@ -144,13 +144,12 @@ create_random <- function(
 
 test_that("use", {
 
-  skip("WIP")
   seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
   set.seed(seed)
 
-  status <- 0
   # Approx 30 per minute
   for (i in seq(1, 30 * 60)) {
+    set.seed(i + 4)
     print(i)
     ok <- create_random()
     if (ok == FALSE) {
