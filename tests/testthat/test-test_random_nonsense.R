@@ -39,7 +39,7 @@ create_rnd_anything <- function(
 }
 
 create_rnd_site_model_nasty <- function() {
-  if (beautier:::create_rnd_bool()) {
+  if (create_rnd_bool()) {
     beautier:::create_rnd_site_model()
   } else {
     create_rnd_anything()
@@ -47,7 +47,7 @@ create_rnd_site_model_nasty <- function() {
 }
 
 create_rnd_clock_model_nasty <- function() {
-  if (beautier:::create_rnd_bool()) {
+  if (create_rnd_bool()) {
     beautier:::create_rnd_clock_model()
   } else {
     create_rnd_anything()
@@ -55,7 +55,7 @@ create_rnd_clock_model_nasty <- function() {
 }
 
 create_rnd_tree_prior_nasty <- function() {
-  if (beautier:::create_rnd_bool()) {
+  if (create_rnd_bool()) {
     beautier:::create_rnd_tree_prior()
   } else {
     create_rnd_anything()
@@ -65,7 +65,7 @@ create_rnd_tree_prior_nasty <- function() {
 create_rnd_mrca_prior_nasty <- function(
   fasta_filename = beautier:::get_beautier_path("anthus_aco.fas")
 ) {
-  if (beautier:::create_rnd_bool()) {
+  if (create_rnd_bool()) {
     beautier:::create_rnd_mrca_prior(fasta_filename)
   } else {
     create_rnd_anything()

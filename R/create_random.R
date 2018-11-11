@@ -20,7 +20,7 @@ create_rnd_bd_tree_prior <- function() {
 create_rnd_beta_distr <- function() {
 
   beta_distr <- NA
-  while (is_one_na(beta_distr)) {
+  while (beautier:::is_one_na(beta_distr)) {
     tryCatch(
       beta_distr <- create_beta_distr( # nolint internal function
         alpha = create_rnd_alpha_param(), # nolint internal function
@@ -32,7 +32,7 @@ create_rnd_beta_distr <- function() {
           "'beta' must have a value of at least 1.0"
         )
         testit::assert(
-          is_in_patterns(line = error$message, patterns = whitelist) # nolint internal function
+          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -153,7 +153,7 @@ create_rnd_freq_equilibrium <- function() {
 create_rnd_gamma_distr <- function() {
 
   gamma_distr <- NA
-  while (is_one_na(gamma_distr)) {
+  while (beautier:::is_one_na(gamma_distr)) {
     tryCatch(
         gamma_distr <- create_gamma_distr( # nolint internal function
         alpha = create_rnd_alpha_param(), # nolint internal function
@@ -165,7 +165,7 @@ create_rnd_gamma_distr <- function() {
           "'value' of 'beta' must be positive"
         )
         testit::assert(
-          is_in_patterns(line = error$message, patterns = whitelist) # nolint internal function
+          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -177,7 +177,7 @@ create_rnd_gamma_distr <- function() {
 #' @author Richel J.C. Bilderbeek
 create_rnd_gamma_site_model <- function() {
   gamma_site_model <- NA
-  while (is_one_na(gamma_site_model)) {
+  while (beautier:::is_one_na(gamma_site_model)) {
     tryCatch(
       gamma_site_model <- create_gamma_site_model( # nolint internal function
         gamma_cat_count = sample(x = -1:4, size = 1),
@@ -194,7 +194,7 @@ create_rnd_gamma_site_model <- function() {
           "'gamma_shape_prior_distr' must be NA for a 'gamma_cat_count' of less than two" # nolint indeed long error message, preferred this over using paste0
         )
         testit::assert(
-          is_in_patterns(line = error$message, patterns = whitelist) # nolint internal function
+          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -291,7 +291,7 @@ create_rnd_laplace_distr <- function() {
 create_rnd_log_normal_distr <- function() {
 
   log_normal_distr <- NA
-  while (is_one_na(log_normal_distr)) {
+  while (beautier:::is_one_na(log_normal_distr)) {
     tryCatch(
       log_normal_distr <- create_log_normal_distr( # nolint internal function
         m = create_rnd_m_param(), # nolint internal function
@@ -302,7 +302,7 @@ create_rnd_log_normal_distr <- function() {
           "'value' of 's' must be positive"
         )
         testit::assert(
-          is_in_patterns(line = error$message, patterns = whitelist) # nolint internal function
+          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -550,7 +550,7 @@ create_rnd_scale_param <- function() {
 #' @author Richel J.C. Bilderbeek
 create_rnd_sigma_param <- function() {
   sigma_param <- NA
-  while (is_one_na(sigma_param)) { # nolint internal function
+  while (beautier:::is_one_na(sigma_param)) { # nolint internal function
     tryCatch(
       sigma_param <- create_sigma_param( # nolint internal function
         value = stats::runif(n = 1, min = -10, max = 10)
@@ -560,7 +560,7 @@ create_rnd_sigma_param <- function() {
           "'value' must be non-zero and positive"
         )
         testit::assert(
-          is_in_patterns(line = error$message, patterns = whitelist) # nolint internal function
+          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -631,7 +631,7 @@ create_rnd_tree_prior <- function() {
 create_rnd_uniform_distr <- function() {
 
   uniform_distr <- NA
-  while (is_one_na(uniform_distr)) {
+  while (beautier:::is_one_na(uniform_distr)) {
     tryCatch(
       uniform_distr <- create_uniform_distr( # nolint internal function
         upper = stats::runif(n = 1, min = -10, max = 10)
@@ -641,7 +641,7 @@ create_rnd_uniform_distr <- function() {
           "'upper' must be non-zero and positive"
         )
         testit::assert(
-          is_in_patterns(line = error$message, patterns = whitelist) # nolint internal function
+          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
