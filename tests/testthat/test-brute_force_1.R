@@ -7,7 +7,7 @@ test_that("all combinations", {
   for (site_model in beautier:::create_site_models()) {
     for (clock_model in beautier:::create_clock_models()) {
       for (tree_prior in beautier:::create_tree_priors()) {
-        if (runif(n = 1) > 0.01) next
+        if (runif(n = 1) > 0.001) next
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
           input_filenames = input_fasta_filename,
@@ -46,7 +46,7 @@ test_that("monophyletic MRCA prior with distr", {
     for (clock_model in beautier:::create_clock_models()) {
       for (tree_prior in beautier:::create_tree_priors()) {
 
-        if (runif(n = 1) > 0.01) next
+        if (runif(n = 1) > 0.001) next
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
           input_filenames = input_fasta_filename,
@@ -86,7 +86,7 @@ test_that("non-monophyletic MRCA prior with distr", {
     for (clock_model in beautier:::create_clock_models()) {
       for (tree_prior in beautier:::create_tree_priors()) {
 
-        if (runif(n = 1) > 0.01) next
+        if (runif(n = 1) > 0.001) next
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
           input_filenames = input_fasta_filename,
