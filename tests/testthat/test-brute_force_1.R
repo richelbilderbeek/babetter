@@ -2,6 +2,7 @@ context("test-brute_force_1")
 
 test_that("all combinations", {
 
+  skip("Use random")
   input_fasta_filename <- beautier:::get_beautier_path("anthus_aco_sub.fas")
 
   for (site_model in beautier:::create_site_models()) {
@@ -31,6 +32,8 @@ test_that("all combinations", {
 })
 
 test_that("monophyletic MRCA prior with distr", {
+
+  skip("Use random")
 
   input_fasta_filename <- beautier:::get_beautier_path("anthus_aco_sub.fas")
   mrca_prior <- beautier::create_mrca_prior(
@@ -71,6 +74,8 @@ test_that("monophyletic MRCA prior with distr", {
 })
 
 test_that("non-monophyletic MRCA prior with distr", {
+
+  skip("Use random")
 
   input_fasta_filename <- beautier:::get_beautier_path("anthus_aco_sub.fas")
   mrca_prior <- beautier::create_mrca_prior(
