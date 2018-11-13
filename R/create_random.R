@@ -331,7 +331,7 @@ create_rnd_mean_param <- function() {
 #' @param fasta_filename a FASTA filename
 #' @author Richel J.C. Bilderbeek
 create_rnd_mrca_prior <- function(fasta_filename) {
-  all_taxa_names <- get_taxa_names(fasta_filename) # nolint internal function
+  all_taxa_names <- beautier::get_taxa_names(fasta_filename) # nolint internal function
   n_taxa <- stats::runif(min = 1, max = length(all_taxa_names), n = 1)
   taxa_names <- sample(x = all_taxa_names, size = n_taxa)
   beautier::create_mrca_prior( # nolint internal function
