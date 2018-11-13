@@ -2,7 +2,6 @@ context("test-brute_force_1")
 
 test_that("all combinations", {
 
-  skip("Use random")
   input_fasta_filename <- beautier::get_beautier_path("anthus_aco_sub.fas")
 
   for (site_model in beautier:::create_site_models()) {
