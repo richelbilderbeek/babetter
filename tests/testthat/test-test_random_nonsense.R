@@ -81,9 +81,8 @@ create_random_nonsense <- function(
   input_fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
 ) {
   output_xml_filename <- tempfile()
-  done <- FALSE
 
-  while (done == FALSE) {
+  while (1) {
 
     fasta_filename <- NULL
     site_model <- NULL
@@ -123,25 +122,21 @@ create_random_nonsense <- function(
           print("ERROR:")
           print(error$message)
           print("Not found in the whitelist")
+          print("FULL ERROR:")
+          beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
+          print("site model:")
+          print(site_model)
+          print("clock model:")
+          print(clock_model)
+          print("tree prior:")
+          print(tree_prior)
+          print("mrca prior:")
+          print(mrca_prior)
+          return(FALSE)
         }
-        done <- FALSE
       }
     )
   }
-  is_ok <- beastier::is_beast2_input_file(output_xml_filename)
-  if (!is_ok) {
-    print("ERROR")
-    beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
-    print("site model:")
-    print(site_model)
-    print("clock model:")
-    print(clock_model)
-    print("tree prior:")
-    print(tree_prior)
-    print("mrca prior:")
-    print(mrca_prior)
-  }
-  is_ok
 }
 
 test_that("use", {
