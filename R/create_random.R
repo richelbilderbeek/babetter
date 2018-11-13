@@ -335,7 +335,7 @@ create_rnd_mrca_prior <- function(fasta_filename) {
   n_taxa <- stats::runif(min = 1, max = length(all_taxa_names), n = 1)
   taxa_names <- sample(x = all_taxa_names, size = n_taxa)
   beautier::create_mrca_prior( # nolint internal function
-    alignment_id = get_alignment_id(fasta_filename),
+    alignment_id = beautier::get_alignment_id(fasta_filename),
     taxa_names = taxa_names,
     is_monophyletic = create_rnd_bool(),
     mrca_distr = create_rnd_distr()
@@ -370,7 +370,7 @@ create_rnd_two_mrca_priors <- function(fasta_filename) {
       create_rnd_mrca_prior(fasta_filename), # nolint internal function
       create_rnd_mrca_prior(fasta_filename) # nolint internal function
     )
-    if (are_mrca_taxa_non_intersecting(mrca_priors)) { # nolint internal function
+    if (beautier:::are_mrca_taxa_non_intersecting(mrca_priors)) { # nolint internal function
       return(mrca_priors)
     }
   }

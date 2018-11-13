@@ -144,7 +144,7 @@ test_that("Run MRCA, no distr", {
     beautier::create_beast2_input(
       input_filenames = fasta_filename,
       mrca_priors = beautier::create_mrca_prior(
-        alignment_id = get_alignment_id(fasta_filename),
+        alignment_id = beautier::get_alignment_id(fasta_filename),
         taxa_names = beautier::get_taxa_names(fasta_filename)
       )
     )
