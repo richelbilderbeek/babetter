@@ -1,9 +1,9 @@
 context("test-test_random")
 
 create_random <- function(
-  input_fasta_filename = get_beautier_path("anthus_aco.fas")
+  input_fasta_filename = beatier::get_beautier_path("anthus_aco.fas")
 ) {
-  input_filename <- get_beautier_path("anthus_aco.fas")
+  input_filename <- beatier::get_beautier_path("anthus_aco.fas")
   output_xml_filename <- tempfile()
   site_model <- create_rnd_site_model()
   clock_model <- create_rnd_clock_model()

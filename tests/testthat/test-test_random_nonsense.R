@@ -1,7 +1,7 @@
 context("test-random_nonsense")
 
 create_rnd_anything <- function(
-  fasta_filename = beautier:::get_beautier_path("anthus_aco.fas")
+  fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
 ) {
   anything_index <- sample(x = 1:14, size = 1)
 
@@ -63,7 +63,7 @@ create_rnd_tree_prior_nasty <- function() {
 }
 
 create_rnd_mrca_prior_nasty <- function(
-  fasta_filename = beautier:::get_beautier_path("anthus_aco.fas")
+  fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
 ) {
   if (create_rnd_bool()) {
     create_rnd_mrca_prior(fasta_filename)
@@ -78,7 +78,7 @@ create_rnd_crown_age <- function() {
 }
 
 create_random_nonsense <- function(
-  input_fasta_filename = beautier:::get_beautier_path("anthus_aco.fas")
+  input_fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
 ) {
   output_xml_filename <- tempfile()
   done <- FALSE
@@ -94,7 +94,7 @@ create_random_nonsense <- function(
 
     tryCatch(
       {
-        fasta_filename <- beautier:::get_beautier_path("anthus_aco.fas")
+        fasta_filename <- beautier::get_beautier_path("anthus_aco.fas")
         site_model <- create_rnd_site_model_nasty()
         clock_model <- create_rnd_clock_model_nasty()
         tree_prior <- create_rnd_tree_prior_nasty()

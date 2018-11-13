@@ -3,7 +3,7 @@ context("test-brute_force_1")
 test_that("all combinations", {
 
   skip("Use random")
-  input_fasta_filename <- beautier:::get_beautier_path("anthus_aco_sub.fas")
+  input_fasta_filename <- beautier::get_beautier_path("anthus_aco_sub.fas")
 
   for (site_model in beautier:::create_site_models()) {
     for (clock_model in beautier:::create_clock_models()) {
@@ -35,7 +35,7 @@ test_that("monophyletic MRCA prior with distr", {
 
   skip("Use random")
 
-  input_fasta_filename <- beautier:::get_beautier_path("anthus_aco_sub.fas")
+  input_fasta_filename <- beautier::get_beautier_path("anthus_aco_sub.fas")
   mrca_prior <- beautier::create_mrca_prior(
     alignment_id = beautier::get_alignment_id(input_fasta_filename),
     taxa_names = beautier::get_taxa_names(input_fasta_filename),
@@ -77,7 +77,7 @@ test_that("non-monophyletic MRCA prior with distr", {
 
   skip("Use random")
 
-  input_fasta_filename <- beautier:::get_beautier_path("anthus_aco_sub.fas")
+  input_fasta_filename <- beautier::get_beautier_path("anthus_aco_sub.fas")
   mrca_prior <- beautier::create_mrca_prior(
     alignment_id = beautier::get_alignment_id(input_fasta_filename),
     taxa_names = beautier::get_taxa_names(input_fasta_filename),
