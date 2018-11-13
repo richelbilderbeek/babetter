@@ -144,8 +144,6 @@ create_random_nonsense <- function(
 
 test_that("use", {
 
-  skip("No test_random_nonsense")
-
   seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
   set.seed(seed)
 
