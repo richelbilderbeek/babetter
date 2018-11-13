@@ -50,6 +50,7 @@ create_rnd_beta_param <- function() {
 
 #' Create a random boolean
 #' @author Richel J.C. Bilderbeek
+#' @export
 create_rnd_bool <- function() {
   sample(x = 1:2, size = 1) == 1
 }
@@ -199,7 +200,7 @@ create_rnd_gamma_site_model <- function() {
       }
     )
   }
-  testit::assert(is_gamma_site_model(gamma_site_model)) # nolint internal function
+  testit::assert(beautier:::is_gamma_site_model(gamma_site_model)) # nolint internal function
   gamma_site_model
 }
 

@@ -1,14 +1,14 @@
 context("test-test_random")
 
 create_random <- function(
-  input_fasta_filename = beautier:::get_beautier_path("anthus_aco.fas")
+  input_fasta_filename = get_beautier_path("anthus_aco.fas")
 ) {
-  input_filename <- beautier:::get_beautier_path("anthus_aco.fas")
+  input_filename <- get_beautier_path("anthus_aco.fas")
   output_xml_filename <- tempfile()
-  site_model <- beautier:::create_rnd_site_model()
-  clock_model <- beautier:::create_rnd_clock_model()
-  tree_prior <- beautier:::create_rnd_tree_prior()
-  mrca_priors <- beautier:::create_rnd_mrca_priors(input_filename)
+  site_model <- create_rnd_site_model()
+  clock_model <- create_rnd_clock_model()
+  tree_prior <- create_rnd_tree_prior()
+  mrca_priors <- create_rnd_mrca_priors(input_filename)
 
   beautier::create_beast2_input_file(
     input_filenames = input_filename,

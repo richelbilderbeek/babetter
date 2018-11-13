@@ -6,21 +6,21 @@ create_rnd_anything <- function(
   anything_index <- sample(x = 1:14, size = 1)
 
   if (anything_index == 1) {
-    beautier:::create_rnd_site_model()
+    create_rnd_site_model()
   } else if (anything_index == 2) {
-    beautier:::create_rnd_clock_model()
+    create_rnd_clock_model()
   } else if (anything_index == 3) {
-    beautier:::create_rnd_tree_prior()
+    create_rnd_tree_prior()
   } else if (anything_index == 4) {
-    beautier:::create_rnd_gamma_site_model()
+    create_rnd_gamma_site_model()
   } else if (anything_index == 5) {
-    beautier:::create_rnd_distr()
+    create_rnd_distr()
   } else if (anything_index == 6) {
-    beautier:::create_rnd_freq_equilibrium()
+    create_rnd_freq_equilibrium()
   } else if (anything_index == 7) {
-    beautier:::create_rnd_estimate()
+    create_rnd_estimate()
   } else if (anything_index == 8) {
-    beautier:::create_rnd_param()
+    create_rnd_param()
   } else if (anything_index == 9) {
     "nonsense"
   } else if (anything_index == 10) {
@@ -32,7 +32,7 @@ create_rnd_anything <- function(
   } else if (anything_index == 13) {
     ape::rcoal(4)
   } else if (anything_index == 14) {
-    beautier:::create_rnd_mrca_prior(fasta_filename)
+    create_rnd_mrca_prior(fasta_filename)
   } else {
     testit::assert(!"Should not get here")
   }
@@ -40,7 +40,7 @@ create_rnd_anything <- function(
 
 create_rnd_site_model_nasty <- function() {
   if (create_rnd_bool()) {
-    beautier:::create_rnd_site_model()
+    create_rnd_site_model()
   } else {
     create_rnd_anything()
   }
@@ -48,7 +48,7 @@ create_rnd_site_model_nasty <- function() {
 
 create_rnd_clock_model_nasty <- function() {
   if (create_rnd_bool()) {
-    beautier:::create_rnd_clock_model()
+    create_rnd_clock_model()
   } else {
     create_rnd_anything()
   }
@@ -56,7 +56,7 @@ create_rnd_clock_model_nasty <- function() {
 
 create_rnd_tree_prior_nasty <- function() {
   if (create_rnd_bool()) {
-    beautier:::create_rnd_tree_prior()
+    create_rnd_tree_prior()
   } else {
     create_rnd_anything()
   }
@@ -66,7 +66,7 @@ create_rnd_mrca_prior_nasty <- function(
   fasta_filename = beautier:::get_beautier_path("anthus_aco.fas")
 ) {
   if (create_rnd_bool()) {
-    beautier:::create_rnd_mrca_prior(fasta_filename)
+    create_rnd_mrca_prior(fasta_filename)
   } else {
     create_rnd_anything()
   }
@@ -77,7 +77,7 @@ create_rnd_crown_age <- function() {
   sample(x = values, size = 1)
 }
 
-create_random <- function(
+create_random_nonsense <- function(
   input_fasta_filename = beautier:::get_beautier_path("anthus_aco.fas")
 ) {
   output_xml_filename <- tempfile()
@@ -151,7 +151,7 @@ test_that("use", {
   for (i in seq(1, 1 * 10)) {
     set.seed(i + 4)
     print(i)
-    ok <- create_random()
+    ok <- create_random_nonsense()
     if (ok == FALSE) {
       print(paste("seed:", seed))
       status <- 1
