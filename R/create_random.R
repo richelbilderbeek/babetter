@@ -1,7 +1,7 @@
 #' Create a random alpha parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_alpha_param <- function() {
-  beatier::create_alpha_param( # nolint internal function
+  beautier::create_alpha_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -9,7 +9,7 @@ create_rnd_alpha_param <- function() {
 #' Create a random BD tree prior
 #' @author Richel J.C. Bilderbeek
 create_rnd_bd_tree_prior <- function() {
-  beatier::create_bd_tree_prior( # nolint internal function
+  beautier::create_bd_tree_prior( # nolint internal function
     birth_rate_distr = create_rnd_distr(), # nolint internal function
     death_rate_distr = create_rnd_distr() # nolint internal function
   )
@@ -22,7 +22,7 @@ create_rnd_beta_distr <- function() {
   beta_distr <- NA
   while (beautier:::is_one_na(beta_distr)) {
     tryCatch(
-      beta_distr <- beatier::create_beta_distr( # nolint internal function
+      beta_distr <- beautier::create_beta_distr( # nolint internal function
         alpha = create_rnd_alpha_param(), # nolint internal function
         beta = create_rnd_beta_param() # nolint internal function
       ),
@@ -43,7 +43,7 @@ create_rnd_beta_distr <- function() {
 #' Create a random beta parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_beta_param <- function() {
-  beatier::create_beta_param( # nolint internal function
+  beautier::create_beta_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -58,13 +58,13 @@ create_rnd_bool <- function() {
 #' Create a random CBS tree prior
 #' @author Richel J.C. Bilderbeek
 create_rnd_cbs_tree_prior <- function() {
-  beatier::create_cbs_tree_prior() # nolint internal function
+  beautier::create_cbs_tree_prior() # nolint internal function
 }
 
 #' Create a random CCP tree prior
 #' @author Richel J.C. Bilderbeek
 create_rnd_ccp_tree_prior <- function() {
-  beatier::create_ccp_tree_prior( # nolint internal function
+  beautier::create_ccp_tree_prior( # nolint internal function
     pop_size_distr = create_rnd_distr() # nolint internal function
   )
 }
@@ -72,7 +72,7 @@ create_rnd_ccp_tree_prior <- function() {
 #' Create a random CEP tree prior
 #' @author Richel J.C. Bilderbeek
 create_rnd_cep_tree_prior <- function() {
-  beatier::create_cep_tree_prior( # nolint internal function
+  beautier::create_cep_tree_prior( # nolint internal function
     pop_size_distr = create_rnd_distr(), # nolint internal function
     growth_rate_distr = create_rnd_distr() # nolint internal function
   )
@@ -93,7 +93,7 @@ create_rnd_clock_model <- function() {
 #' Create a random clock rate parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_clock_rate_param <- function() {
-  beatier::create_clock_rate_param( # nolint internal function
+  beautier::create_clock_rate_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -136,7 +136,7 @@ create_rnd_estimate <- function() {
 #' Create a random exponential distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_exp_distr <- function() {
-  beatier::create_exp_distr(
+  beautier::create_exp_distr(
     mean = create_rnd_mean_param() # nolint internal function
   )
 }
@@ -156,7 +156,7 @@ create_rnd_gamma_distr <- function() {
   gamma_distr <- NA
   while (beautier:::is_one_na(gamma_distr)) {
     tryCatch(
-        gamma_distr <- beatier::create_gamma_distr( # nolint internal function
+        gamma_distr <- beautier::create_gamma_distr( # nolint internal function
         alpha = create_rnd_alpha_param(), # nolint internal function
         beta = create_rnd_beta_param() # nolint internal function
       ),
@@ -180,7 +180,7 @@ create_rnd_gamma_site_model <- function() {
   gamma_site_model <- NA
   while (beautier:::is_one_na(gamma_site_model)) {
     tryCatch(
-      gamma_site_model <- beatier::create_gamma_site_model( # nolint internal function
+      gamma_site_model <- beautier::create_gamma_site_model( # nolint internal function
         gamma_cat_count = sample(x = -1:4, size = 1),
         gamma_shape = stats::runif(n = 1, min = -1.0, max = 1.0),
         prop_invariant = stats::runif(n = 1, min = -1.0, max = 1.0),
@@ -207,7 +207,7 @@ create_rnd_gamma_site_model <- function() {
 #' Create a random GTR site model
 #' @author Richel J.C. Bilderbeek
 create_rnd_gtr_site_model <- function() {
-  beatier::create_gtr_site_model( # nolint internal function
+  beautier::create_gtr_site_model( # nolint internal function
     gamma_site_model = create_rnd_gamma_site_model(), # nolint internal function
     rate_ac_prior_distr = create_rnd_distr(), # nolint internal function
     rate_ag_prior_distr = create_rnd_distr(), # nolint internal function
@@ -227,7 +227,7 @@ create_rnd_gtr_site_model <- function() {
 #' Create a random HKY site model
 #' @author Richel J.C. Bilderbeek
 create_rnd_hky_site_model <- function() {
-  beatier::create_hky_site_model( # nolint internal function
+  beautier::create_hky_site_model( # nolint internal function
     gamma_site_model = create_rnd_gamma_site_model(), # nolint internal function
     kappa = stats::runif(n = 1, min = -100.0, max = 100.0),
     kappa_prior_distr = create_rnd_distr(), # nolint internal function
@@ -238,7 +238,7 @@ create_rnd_hky_site_model <- function() {
 #' Create a random inverse-gamma distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_inv_gamma_distr <- function() {
-  beatier::create_inv_gamma_distr( # nolint internal function
+  beautier::create_inv_gamma_distr( # nolint internal function
     alpha = create_rnd_alpha_param(), # nolint internal function
     beta = create_rnd_beta_param() # nolint internal function
   )
@@ -247,7 +247,7 @@ create_rnd_inv_gamma_distr <- function() {
 #' Create a random JC69 distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_jc69_site_model <- function() {
-  beatier::create_jc69_site_model( # nolint internal function
+  beautier::create_jc69_site_model( # nolint internal function
     gamma_site_model = create_rnd_gamma_site_model() # nolint internal function
   )
 }
@@ -255,7 +255,7 @@ create_rnd_jc69_site_model <- function() {
 #' Create a random kappa 1 parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_kappa_1_param <- function() {
-  beatier::create_kappa_1_param( # nolint internal function
+  beautier::create_kappa_1_param( # nolint internal function
     lower = stats::runif(n = 1, min = -10, max = 10),
     value = stats::runif(n = 1, min = -10, max = 10)
   )
@@ -264,7 +264,7 @@ create_rnd_kappa_1_param <- function() {
 #' Create a random kappa 2 parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_kappa_2_param <- function() {
-  beatier::create_kappa_2_param( # nolint internal function
+  beautier::create_kappa_2_param( # nolint internal function
     lower = stats::runif(n = 1, min = -10, max = 10),
     value = stats::runif(n = 1, min = -10, max = 10)
   )
@@ -273,7 +273,7 @@ create_rnd_kappa_2_param <- function() {
 #' Create a random lambda parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_lambda_param <- function() {
-  beatier::create_lambda_param( # nolint internal function
+  beautier::create_lambda_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -281,7 +281,7 @@ create_rnd_lambda_param <- function() {
 #' Create a random Laplace distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_laplace_distr <- function() {
-  beatier::create_laplace_distr( # nolint internal function
+  beautier::create_laplace_distr( # nolint internal function
     mu = create_rnd_mu_param(), # nolint internal function
     scale = create_rnd_scale_param() # nolint internal function
   )
@@ -294,7 +294,7 @@ create_rnd_log_normal_distr <- function() {
   log_normal_distr <- NA
   while (beautier:::is_one_na(log_normal_distr)) {
     tryCatch(
-      log_normal_distr <- beatier::create_log_normal_distr( # nolint internal function
+      log_normal_distr <- beautier::create_log_normal_distr( # nolint internal function
         m = create_rnd_m_param(), # nolint internal function
         s = create_rnd_s_param() # nolint internal function
       ),
@@ -314,7 +314,7 @@ create_rnd_log_normal_distr <- function() {
 #' Create a random m parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_m_param <- function() {
-  beatier::create_m_param( # nolint internal function
+  beautier::create_m_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -322,7 +322,7 @@ create_rnd_m_param <- function() {
 #' Create a random mean parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_mean_param <- function() {
-  beatier::create_mean_param( # nolint internal function
+  beautier::create_mean_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -334,7 +334,7 @@ create_rnd_mrca_prior <- function(fasta_filename) {
   all_taxa_names <- get_taxa_names(fasta_filename) # nolint internal function
   n_taxa <- stats::runif(min = 1, max = length(all_taxa_names), n = 1)
   taxa_names <- sample(x = all_taxa_names, size = n_taxa)
-  beatier::create_mrca_prior( # nolint internal function
+  beautier::create_mrca_prior( # nolint internal function
     alignment_id = get_alignment_id(fasta_filename),
     taxa_names = taxa_names,
     is_monophyletic = create_rnd_bool(),
@@ -379,7 +379,7 @@ create_rnd_two_mrca_priors <- function(fasta_filename) {
 #' Create a random mu parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_mu_param <- function() {
-  beatier::create_mu_param( # nolint internal function
+  beautier::create_mu_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -387,7 +387,7 @@ create_rnd_mu_param <- function() {
 #' Create a random normal distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_normal_distr <- function() {
-  beatier::create_normal_distr( # nolint internal function
+  beautier::create_normal_distr( # nolint internal function
     mean = create_rnd_mean_param(), # nolint internal function
     sigma = create_rnd_sigma_param() # nolint internal function
   )
@@ -396,7 +396,7 @@ create_rnd_normal_distr <- function() {
 #' Create a random 1/x distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_one_div_x_distr <- function() {
-  beatier::create_one_div_x_distr() # nolint internal function
+  beautier::create_one_div_x_distr() # nolint internal function
 }
 
 #' Create a random parameter
@@ -405,49 +405,49 @@ create_rnd_param <- function() {
 
   param_index <- sample(x = 1:18, size = 1)
   if (param_index == 1) {
-    beatier::create_alpha_param() # nolint internal function
+    beautier::create_alpha_param() # nolint internal function
   } else if (param_index == 2) {
-    beatier::create_beta_param() # nolint internal function
+    beautier::create_beta_param() # nolint internal function
   } else if (param_index == 3) {
-    beatier::create_clock_rate_param() # nolint internal function
+    beautier::create_clock_rate_param() # nolint internal function
   } else if (param_index == 4) {
-    beatier::create_kappa_1_param() # nolint internal function
+    beautier::create_kappa_1_param() # nolint internal function
   } else if (param_index == 5) {
-    beatier::create_kappa_2_param() # nolint internal function
+    beautier::create_kappa_2_param() # nolint internal function
   } else if (param_index == 6) {
-    beatier::create_lambda_param() # nolint internal function
+    beautier::create_lambda_param() # nolint internal function
   } else if (param_index == 7) {
-    beatier::create_m_param() # nolint internal function
+    beautier::create_m_param() # nolint internal function
   } else if (param_index == 8) {
-    beatier::create_mean_param() # nolint internal function
+    beautier::create_mean_param() # nolint internal function
   } else if (param_index == 9) {
-    beatier::create_mu_param() # nolint internal function
+    beautier::create_mu_param() # nolint internal function
   } else if (param_index == 10) {
-    beatier::create_rate_ac_param() # nolint internal function
+    beautier::create_rate_ac_param() # nolint internal function
   } else if (param_index == 11) {
-    beatier::create_rate_ag_param() # nolint internal function
+    beautier::create_rate_ag_param() # nolint internal function
   } else if (param_index == 12) {
-    beatier::create_rate_at_param() # nolint internal function
+    beautier::create_rate_at_param() # nolint internal function
   } else if (param_index == 13) {
-    beatier::create_rate_cg_param() # nolint internal function
+    beautier::create_rate_cg_param() # nolint internal function
   } else if (param_index == 14) {
-    beatier::create_rate_ct_param() # nolint internal function
+    beautier::create_rate_ct_param() # nolint internal function
   } else if (param_index == 15) {
-    beatier::create_rate_gt_param() # nolint internal function
+    beautier::create_rate_gt_param() # nolint internal function
   } else if (param_index == 16) {
-    beatier::create_s_param() # nolint internal function
+    beautier::create_s_param() # nolint internal function
   } else if (param_index == 17) {
-    beatier::create_scale_param() # nolint internal function
+    beautier::create_scale_param() # nolint internal function
   } else {
     testit::assert(param_index == 18)
-    beatier::create_sigma_param() # nolint internal function
+    beautier::create_sigma_param() # nolint internal function
   }
 }
 
 #' Create a random Poisson distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_poisson_distr <- function() {
-  beatier::create_poisson_distr( # nolint internal function
+  beautier::create_poisson_distr( # nolint internal function
     lambda = create_rnd_lambda_param() # nolint internal function
   )
 }
@@ -455,7 +455,7 @@ create_rnd_poisson_distr <- function() {
 #' Create a random rate AC parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_rate_ac_param <- function() {
-  beatier::create_rate_ac_param( # nolint internal function
+  beautier::create_rate_ac_param( # nolint internal function
     estimate = create_rnd_estimate(), # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10),
     lower = stats::runif(n = 1, min = -10, max = 10)
@@ -465,7 +465,7 @@ create_rnd_rate_ac_param <- function() {
 #' Create a random rate AG parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_rate_ag_param <- function() {
-  beatier::create_rate_ag_param( # nolint internal function
+  beautier::create_rate_ag_param( # nolint internal function
     estimate = create_rnd_estimate(), # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10),
     lower = stats::runif(n = 1, min = -10, max = 10)
@@ -475,7 +475,7 @@ create_rnd_rate_ag_param <- function() {
 #' Create a random rate AT parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_rate_at_param <- function() {
-  beatier::create_rate_at_param( # nolint internal function
+  beautier::create_rate_at_param( # nolint internal function
     estimate = create_rnd_estimate(), # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10),
     lower = stats::runif(n = 1, min = -10, max = 10)
@@ -485,7 +485,7 @@ create_rnd_rate_at_param <- function() {
 #' Create a random rate CG parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_rate_cg_param <- function() {
-  beatier::create_rate_cg_param( # nolint internal function
+  beautier::create_rate_cg_param( # nolint internal function
     estimate = create_rnd_estimate(), # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10),
     lower = stats::runif(n = 1, min = -10, max = 10)
@@ -496,7 +496,7 @@ create_rnd_rate_cg_param <- function() {
 #' Create a random rate CT parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_rate_ct_param <- function() {
-  beatier::create_rate_ct_param( # nolint internal function
+  beautier::create_rate_ct_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10),
     lower = stats::runif(n = 1, min = -10, max = 10)
   )
@@ -505,7 +505,7 @@ create_rnd_rate_ct_param <- function() {
 #' Create a random rate GT parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_rate_gt_param <- function() {
-  beatier::create_rate_gt_param( # nolint internal function
+  beautier::create_rate_gt_param( # nolint internal function
     estimate = create_rnd_estimate(), # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10),
     lower = stats::runif(n = 1, min = -10, max = 10)
@@ -515,7 +515,7 @@ create_rnd_rate_gt_param <- function() {
 #' Create a random RLN clock model
 #' @author Richel J.C. Bilderbeek
 create_rnd_rln_clock_model <- function() {
-  beatier::create_rln_clock_model( # nolint internal function
+  beautier::create_rln_clock_model( # nolint internal function
     mean_rate_prior_distr = create_rnd_distr(), # nolint internal function
     ucldstdev_distr = create_rnd_distr(), # nolint internal function
     mean_clock_rate = stats::runif(n = 1, min = -100.0, max = 100.0),
@@ -532,7 +532,7 @@ create_rnd_s_param <- function() {
   upper <- value + stats::runif(n = 1, min = 0.1, max = 10)
   testit::assert(lower < value)
   testit::assert(value < upper)
-  beatier::create_s_param( # nolint internal function
+  beautier::create_s_param( # nolint internal function
     value = value,
     lower = lower,
     upper = upper
@@ -542,7 +542,7 @@ create_rnd_s_param <- function() {
 #' Create a random scale parameter
 #' @author Richel J.C. Bilderbeek
 create_rnd_scale_param <- function() {
-  beatier::create_scale_param( # nolint internal function
+  beautier::create_scale_param( # nolint internal function
     value = stats::runif(n = 1, min = -10, max = 10)
   )
 }
@@ -553,7 +553,7 @@ create_rnd_sigma_param <- function() {
   sigma_param <- NA
   while (beautier:::is_one_na(sigma_param)) { # nolint internal function
     tryCatch(
-      sigma_param <- beatier::create_sigma_param( # nolint internal function
+      sigma_param <- beautier::create_sigma_param( # nolint internal function
         value = stats::runif(n = 1, min = -10, max = 10)
       ),
       error = function(error) {
@@ -589,7 +589,7 @@ create_rnd_site_model <- function() {
 #' Create a random strict clock model
 #' @author Richel J.C. Bilderbeek
 create_rnd_strict_clock_model <- function() {
-  beatier::create_strict_clock_model( # nolint internal function
+  beautier::create_strict_clock_model( # nolint internal function
     clock_rate_param = create_rnd_clock_rate_param(), # nolint internal function
     clock_rate_distr = create_rnd_distr() # nolint internal function
   )
@@ -598,7 +598,7 @@ create_rnd_strict_clock_model <- function() {
 #' Create a random TN93 site model
 #' @author Richel J.C. Bilderbeek
 create_rnd_tn93_site_model <- function() {
-  beatier::create_tn93_site_model( # nolint internal function
+  beautier::create_tn93_site_model( # nolint internal function
     gamma_site_model = create_rnd_gamma_site_model(), # nolint internal function
     kappa_1_param = create_rnd_kappa_1_param(), # nolint internal function
     kappa_2_param = create_rnd_kappa_2_param(), # nolint internal function
@@ -634,7 +634,7 @@ create_rnd_uniform_distr <- function() {
   uniform_distr <- NA
   while (beautier:::is_one_na(uniform_distr)) {
     tryCatch(
-      uniform_distr <- beatier::create_uniform_distr( # nolint internal function
+      uniform_distr <- beautier::create_uniform_distr( # nolint internal function
         upper = stats::runif(n = 1, min = -10, max = 10)
       ),
       error = function(error) {
@@ -653,7 +653,7 @@ create_rnd_uniform_distr <- function() {
 #' Create a random Yule tree prior
 #' @author Richel J.C. Bilderbeek
 create_rnd_yule_tree_prior <- function() {
-  beatier::create_yule_tree_prior( # nolint internal function
+  beautier::create_yule_tree_prior( # nolint internal function
     birth_rate_distr = create_rnd_distr() # nolint internal function
   )
 }
