@@ -144,18 +144,18 @@ create_random_nonsense <- function(
 
 test_that("use", {
 
+  skip("No test_random_nonsense")
+
   seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
   set.seed(seed)
 
-  # 1 attempts per minute, use ten minutes
-  for (i in seq(1, 1 * 10)) {
+  # 1 attempts per minute, use 1 minute
+  for (i in seq(1, 1 * 1)) {
     set.seed(i + 4)
     print(i)
     ok <- create_random_nonsense()
     if (ok == FALSE) {
       print(paste("seed:", seed))
-      status <- 1
-      break
     }
     expect_true(ok)
   }

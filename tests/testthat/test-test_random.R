@@ -48,17 +48,17 @@ create_random <- function(
 
 test_that("use", {
 
+  skip("No test_random")
+
   seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
   set.seed(seed)
 
-  # 1 attempts per minute, use ten minutes
-  for (i in seq(1, 1 * 10)) {
+  # 1 attempts per minute, use one minute
+  for (i in seq(1, 1 * 1)) {
     print(i)
     ok <- create_random()
     if (ok == FALSE) {
-      status <- 1
       print(paste("seed:", seed))
-      break
     }
     expect_true(ok)
   }
