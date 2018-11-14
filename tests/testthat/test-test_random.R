@@ -48,6 +48,7 @@ create_random <- function(
 
 test_that("use", {
 
+  skip("Not now")
   seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
   set.seed(seed)
 
