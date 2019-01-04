@@ -12,9 +12,9 @@ r_github_packages:
   - jimhester/lintr
   - richelbilderbeek/babette
   - richelbilderbeek/beastier
-  - ropensci/beautier@develop
+  - ropensci/beautier
   - richelbilderbeek/mauricer
-  - richelbilderbeek/tracerer
+  - ropensci/tracerer
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
   - ropensci/spelling
