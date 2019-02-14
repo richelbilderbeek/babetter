@@ -12,7 +12,7 @@ test_that("Can specify fixed crown age", {
   output_xml_filename_fixed <- tempfile()
 
   beautier::create_beast2_input_file(
-    input_filenames = input_fasta_filename,
+    input_filename = input_fasta_filename,
     output_xml_filename = output_xml_filename_fixed,
     posterior_crown_age = 15
   )
@@ -27,7 +27,7 @@ test_that("Can specify fixed crown ages", {
   output_xml_filename_fixed <- tempfile()
 
   beautier::create_beast2_input_file(
-    input_filenames = input_filenames,
+    input_filename = input_filenames,
     output_xml_filename = output_xml_filename_fixed,
     posterior_crown_age = 15
   )

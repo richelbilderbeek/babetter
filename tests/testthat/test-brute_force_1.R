@@ -12,9 +12,9 @@ test_that("all combinations", {
         beautier::create_beast2_input_file(
           input_filename = input_fasta_filename,
           output_filename = output_xml_filename,
-          site_models = site_model,
-          clock_models = clock_model,
-          tree_priors = tree_prior
+          site_model = site_model,
+          clock_model = clock_model,
+          tree_prior = tree_prior
         )
         is_ok <- beastier::is_beast2_input_file(
           output_xml_filename,
@@ -49,12 +49,12 @@ test_that("monophyletic MRCA prior with distr", {
         if (runif(n = 1) > 0.01) next
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
-          input_filenames = input_fasta_filename,
+          input_filename = input_fasta_filename,
           output_filename = output_xml_filename,
-          site_models = site_model,
-          clock_models = clock_model,
-          tree_priors = tree_prior,
-          mrca_priors = mrca_prior
+          site_model = site_model,
+          clock_model = clock_model,
+          tree_prior = tree_prior,
+          mrca_prior = mrca_prior
         )
         is_ok <- beastier::is_beast2_input_file(
           output_xml_filename,
@@ -89,12 +89,12 @@ test_that("non-monophyletic MRCA prior with distr", {
         if (runif(n = 1) > 0.01) next
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
-          input_filenames = input_fasta_filename,
+          input_filename = input_fasta_filename,
           output_filename = output_xml_filename,
-          site_models = site_model,
-          clock_models = clock_model,
-          tree_priors = tree_prior,
-          mrca_priors = mrca_prior
+          site_model = site_model,
+          clock_model = clock_model,
+          tree_prior = tree_prior,
+          mrca_prior = mrca_prior
         )
         is_ok <- beastier::is_beast2_input_file(
           output_xml_filename,

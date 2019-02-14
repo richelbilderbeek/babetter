@@ -100,12 +100,12 @@ create_random_nonsense <- function(
         mrca_prior <- create_rnd_mrca_prior_nasty(fasta_filename)
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
-          input_filenames = fasta_filename,
+          input_filename = fasta_filename,
           output_filename = output_xml_filename,
-          site_models = site_model,
-          clock_models = clock_model,
-          tree_priors = tree_prior,
-          mrca_priors = mrca_prior,
+          site_model = site_model,
+          clock_model = clock_model,
+          tree_prior = tree_prior,
+          mrca_prior = mrca_prior,
           posterior_crown_age = create_rnd_crown_age()
         )
         done <- TRUE
