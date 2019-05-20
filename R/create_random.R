@@ -200,7 +200,7 @@ create_rnd_gamma_site_model <- function() {
       }
     )
   }
-  testit::assert(beautier:::is_gamma_site_model(gamma_site_model)) # nolint internal function
+  testit::assert(beautier::is_gamma_site_model(gamma_site_model)) # nolint internal function
   gamma_site_model
 }
 

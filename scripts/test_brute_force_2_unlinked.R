@@ -1,17 +1,17 @@
 test_that("all combinations, 2 model, unlinked", {
 
   skip("Support for 2 models deprecated")
-  input_filenames <- beautier:::get_paths(
+  input_filenames <- beautier::get_paths(
     c("anthus_aco.fas", "anthus_nd2.fas"))
 
   n_fail <- 0
 
   # Crown ages estimated
-  for (site_model_1 in beautier:::create_site_models()) {
-    for (site_model_2 in beautier:::create_site_models()) {
-      for (clock_model_1 in beautier:::create_clock_models()) {
-        for (clock_model_2 in beautier:::create_clock_models()) {
-          for (tree_prior in beautier:::create_tree_priors()) {
+  for (site_model_1 in beautier::create_site_models()) {
+    for (site_model_2 in beautier::create_site_models()) {
+      for (clock_model_1 in beautier::create_clock_models()) {
+        for (clock_model_2 in beautier::create_clock_models()) {
+          for (tree_prior in beautier::create_tree_priors()) {
             cat(".")
             output_filename <- "~/invalid.xml"
             create_beast2_input_file(
@@ -36,11 +36,11 @@ test_that("all combinations, 2 model, unlinked", {
   }
 
   # Crown ages all fixed
-  for (site_model_1 in beautier:::create_site_models()) {
-    for (site_model_2 in beautier:::create_site_models()) {
-      for (clock_model_1 in beautier:::create_clock_models()) {
-        for (clock_model_2 in beautier:::create_clock_models()) {
-          for (tree_prior in beautier:::create_tree_priors()) {
+  for (site_model_1 in beautier::create_site_models()) {
+    for (site_model_2 in beautier::create_site_models()) {
+      for (clock_model_1 in beautier::create_clock_models()) {
+        for (clock_model_2 in beautier::create_clock_models()) {
+          for (tree_prior in beautier::create_tree_priors()) {
             if (runif(n = 1) < 0.9) next
             cat(".")
             output_filename <- "~/invalid.xml"
