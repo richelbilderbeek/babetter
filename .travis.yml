@@ -1,4 +1,5 @@
 language: r
+dist: xenial
 cache: packages
 
 r_packages:
@@ -17,8 +18,12 @@ r_github_packages:
   - MangoTheCat/goodpractice
   - ropensci/spelling
 
+
 before_script:
-  - # Java 8
-  - sudo apt-get install -qq oracle-java8-installer
-  - sudo apt-get install oracle-java8-set-default
+  - # if Linux, show distro
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat /proc/version; fi
+  - # Java
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R CMD javareconf; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R --quiet -e 'install.packages("rJava", type="source", repos="http://cran.us.r-project.org")'; fi
+  - # BEAST2
   - Rscript -e "beastier::install_beast2()"
