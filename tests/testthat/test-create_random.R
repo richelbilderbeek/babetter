@@ -127,7 +127,7 @@ test_that("create_rnd_gamma_site_model", {
   set.seed(0)
   for (i in seq(1, 3)) {
     expect_true(
-      beautier::is_gamma_site_model(
+      beautier:::is_gamma_site_model(
         create_rnd_gamma_site_model()
       )
     )
