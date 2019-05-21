@@ -48,14 +48,21 @@ test_that("monophyletic MRCA prior with distr", {
 
         if (runif(n = 1) > 0.01) next
         output_xml_filename <- tempfile()
-        beautier::create_beast2_input_file(
-          input_filename = input_fasta_filename,
-          output_filename = output_xml_filename,
-          site_model = site_model,
-          clock_model = clock_model,
-          tree_prior = tree_prior,
-          mrca_prior = mrca_prior
+        is_valid <- FALSE
+
+        tryCatch({
+          beautier::create_beast2_input_file(
+            input_filename = input_fasta_filename,
+            output_filename = output_xml_filename,
+            site_model = site_model,
+            clock_model = clock_model,
+            tree_prior = tree_prior,
+            mrca_prior = mrca_prior
+          )
+          is_valid <- TRUE
+          }, error = function(e) {} # nolint indeed ignore the error
         )
+        if (!is_valid) next()
         is_ok <- beastier::is_beast2_input_file(
           output_xml_filename,
           show_warnings = TRUE
