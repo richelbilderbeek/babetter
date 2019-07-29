@@ -2,12 +2,16 @@ context("test-brute_force_1")
 
 test_that("all combinations", {
 
-  input_fasta_filename <- beautier::get_beautier_path("anthus_aco_sub.fas")
+  # Need at least 6 taxa, else get the error:
+  #
+  #   group_sizes_dimension' (5) must be less than the number of taxa (5)
+  #
+  input_fasta_filename <- beautier::get_beautier_path("test_output_6.fas")
 
   for (site_model in beautier::create_site_models()) {
     for (clock_model in beautier::create_clock_models()) {
       for (tree_prior in beautier::create_tree_priors()) {
-        if (runif(n = 1) > 0.01) next
+        if (runif(n = 1) > 0.1) next
         output_xml_filename <- tempfile()
         beautier::create_beast2_input_file(
           input_filename = input_fasta_filename,
