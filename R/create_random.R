@@ -370,7 +370,7 @@ create_rnd_two_mrca_priors <- function(fasta_filename) {
       create_rnd_mrca_prior(fasta_filename), # nolint internal function
       create_rnd_mrca_prior(fasta_filename) # nolint internal function
     )
-    if (beautier::are_mrca_taxa_non_intersecting(mrca_priors)) { # nolint internal function
+    if (beautier:::are_mrca_taxa_non_intersecting(mrca_priors)) { # nolint internal function
       return(mrca_priors)
     }
   }
