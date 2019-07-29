@@ -127,7 +127,7 @@ test_that("create_rnd_gamma_site_model", {
   set.seed(0)
   for (i in seq(1, 3)) {
     expect_true(
-      beautier:::is_gamma_site_model(
+      beautier::is_gamma_site_model(
         create_rnd_gamma_site_model()
       )
     )
@@ -245,7 +245,7 @@ test_that("create_rnd_mrca_priors", {
   # Repeat often enough so all execution branches are hit
   for (i in seq(1, 6)) {
     expect_true(
-      beautier:::are_mrca_priors(
+      beautier::are_mrca_priors(
         create_rnd_mrca_priors(
           beautier::get_beautier_path("anthus_aco_sub.fas")
         )
@@ -439,10 +439,10 @@ test_that("create_rnd_two_mrca_priors", {
     )
     testit::assert(length(mrca_priors) == 2)
     expect_true(
-      beautier:::are_mrca_priors(mrca_priors)
+      beautier::are_mrca_priors(mrca_priors)
     )
     expect_true(
-      beautier:::are_mrca_taxa_non_intersecting(mrca_priors)
+      beautier::are_mrca_taxa_non_intersecting(mrca_priors)
     )
 
   }
