@@ -4,7 +4,7 @@ test_that("all combinations", {
 
   # Need at least 6 taxa, else get the error:
   #
-  #   group_sizes_dimension' (5) must be less than the number of taxa (5)
+  #   'group_sizes_dimension' (5) must be less than the number of taxa (5)
   #
   input_fasta_filename <- beautier::get_beautier_path("test_output_6.fas")
 
