@@ -473,7 +473,8 @@ create_rnd_mcmc <- function() {
         beautier::create_mcmc(
           chain_length = create_rnd_mcmc_chain_length(),
           store_every = create_rnd_mcmc_store_every(),
-          pre_burnin = create_rnd_mcmc_pre_burnin()
+          pre_burnin = create_rnd_mcmc_pre_burnin(),
+          n_init_attempts = sample(x = -1:100, size = 1)
         )
       )
     }, error = function(e) {} # nolint indeed ignore
