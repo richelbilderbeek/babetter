@@ -3,12 +3,11 @@ context("test-test_random")
 create_random <- function(
   input_fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
 ) {
-  input_filename <- beautier::get_beautier_path("anthus_aco.fas")
   output_xml_filename <- tempfile()
-  inference_model <- create_rnd_inference_model(input_filename)
+  inference_model <- create_rnd_inference_model(input_fasta_filename)
 
   beautier::create_beast2_input_file_from_model(
-    input_filename = input_filename,
+    input_filename = input_fasta_filename,
     inference_model = inference_model,
     output_filename = output_xml_filename
   )
