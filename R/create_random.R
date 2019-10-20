@@ -1,9 +1,28 @@
-#' Create a random alpha parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_alpha_param <- function() {
-  beautier::create_alpha_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
+#' Creates a random BEAST2 setup to validate
+#' @export
+create_random <- function(
+  input_fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
+) {
+  output_xml_filename <- tempfile()
+  inference_model <- create_rnd_inference_model(input_fasta_filename)
+
+  beautier::create_beast2_input_file_from_model(
+    input_filename = input_fasta_filename,
+    inference_model = inference_model,
+    output_filename = output_xml_filename
   )
+  is_ok <- beastier::is_beast2_input_file(
+    output_xml_filename,
+    show_warnings = TRUE
+  )
+  if (!is_ok) {
+    print("ERROR")
+    file.copy(output_xml_filename, "~/bad.xml", overwrite = TRUE)
+    beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
+    print("site inference_model:")
+    print(inference_model)
+  }
+  is_ok
 }
 
 #' Create a random BD tree prior
@@ -38,14 +57,6 @@ create_rnd_beta_distr <- function() {
     )
   }
   beta_distr
-}
-
-#' Create a random beta parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_beta_param <- function() {
-  beautier::create_beta_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
 }
 
 #' Create a random boolean
@@ -88,14 +99,6 @@ create_rnd_clock_model <- function() {
     testit::assert(clock_model_index == 2)
     create_rnd_strict_clock_model() # nolint internal function
   }
-}
-
-#' Create a random clock rate parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_clock_rate_param <- function() {
-  beautier::create_clock_rate_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
 }
 
 #' Create a random distribution
@@ -200,7 +203,7 @@ create_rnd_gamma_site_model <- function() {
       }
     )
   }
-  testit::assert(beautier:::is_gamma_site_model(gamma_site_model)) # nolint internal function
+  testit::assert(beautier::is_gamma_site_model(gamma_site_model)) # nolint internal function
   gamma_site_model
 }
 
@@ -252,32 +255,6 @@ create_rnd_jc69_site_model <- function() {
   )
 }
 
-#' Create a random kappa 1 parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_kappa_1_param <- function() {
-  beautier::create_kappa_1_param( # nolint internal function
-    lower = stats::runif(n = 1, min = -10, max = 10),
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random kappa 2 parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_kappa_2_param <- function() {
-  beautier::create_kappa_2_param( # nolint internal function
-    lower = stats::runif(n = 1, min = -10, max = 10),
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random lambda parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_lambda_param <- function() {
-  beautier::create_lambda_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
 #' Create a random Laplace distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_laplace_distr <- function() {
@@ -309,22 +286,6 @@ create_rnd_log_normal_distr <- function() {
     )
   }
   log_normal_distr
-}
-
-#' Create a random m parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_m_param <- function() {
-  beautier::create_m_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random mean parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_mean_param <- function() {
-  beautier::create_mean_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
 }
 
 #' Create a random MRCA prior
@@ -362,29 +323,6 @@ create_rnd_mrca_priors <- function(fasta_filename) {
   }
 }
 
-#' Creates two MRCA priors, checked to be compatible
-#' @param fasta_filename a FASTA filename
-#' @author Richel J.C. Bilderbeek
-create_rnd_two_mrca_priors <- function(fasta_filename) {
-  while (1) {
-    mrca_priors <- list(
-      create_rnd_mrca_prior(fasta_filename), # nolint internal function
-      create_rnd_mrca_prior(fasta_filename) # nolint internal function
-    )
-    if (beautier:::are_mrca_taxa_non_intersecting(mrca_priors)) { # nolint internal function
-      return(mrca_priors)
-    }
-  }
-}
-
-#' Create a random mu parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_mu_param <- function() {
-  beautier::create_mu_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
 #' Create a random normal distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_normal_distr <- function() {
@@ -400,116 +338,11 @@ create_rnd_one_div_x_distr <- function() {
   beautier::create_one_div_x_distr() # nolint internal function
 }
 
-#' Create a random parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_param <- function() {
-
-  param_index <- sample(x = 1:18, size = 1)
-  if (param_index == 1) {
-    beautier::create_alpha_param() # nolint internal function
-  } else if (param_index == 2) {
-    beautier::create_beta_param() # nolint internal function
-  } else if (param_index == 3) {
-    beautier::create_clock_rate_param() # nolint internal function
-  } else if (param_index == 4) {
-    beautier::create_kappa_1_param() # nolint internal function
-  } else if (param_index == 5) {
-    beautier::create_kappa_2_param() # nolint internal function
-  } else if (param_index == 6) {
-    beautier::create_lambda_param() # nolint internal function
-  } else if (param_index == 7) {
-    beautier::create_m_param() # nolint internal function
-  } else if (param_index == 8) {
-    beautier::create_mean_param() # nolint internal function
-  } else if (param_index == 9) {
-    beautier::create_mu_param() # nolint internal function
-  } else if (param_index == 10) {
-    beautier::create_rate_ac_param() # nolint internal function
-  } else if (param_index == 11) {
-    beautier::create_rate_ag_param() # nolint internal function
-  } else if (param_index == 12) {
-    beautier::create_rate_at_param() # nolint internal function
-  } else if (param_index == 13) {
-    beautier::create_rate_cg_param() # nolint internal function
-  } else if (param_index == 14) {
-    beautier::create_rate_ct_param() # nolint internal function
-  } else if (param_index == 15) {
-    beautier::create_rate_gt_param() # nolint internal function
-  } else if (param_index == 16) {
-    beautier::create_s_param() # nolint internal function
-  } else if (param_index == 17) {
-    beautier::create_scale_param() # nolint internal function
-  } else {
-    testit::assert(param_index == 18)
-    beautier::create_sigma_param() # nolint internal function
-  }
-}
-
 #' Create a random Poisson distribution
 #' @author Richel J.C. Bilderbeek
 create_rnd_poisson_distr <- function() {
   beautier::create_poisson_distr( # nolint internal function
     lambda = create_rnd_lambda_param() # nolint internal function
-  )
-}
-
-#' Create a random rate AC parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_rate_ac_param <- function() {
-  beautier::create_rate_ac_param( # nolint internal function
-    estimate = create_rnd_estimate(), # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10),
-    lower = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random rate AG parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_rate_ag_param <- function() {
-  beautier::create_rate_ag_param( # nolint internal function
-    estimate = create_rnd_estimate(), # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10),
-    lower = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random rate AT parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_rate_at_param <- function() {
-  beautier::create_rate_at_param( # nolint internal function
-    estimate = create_rnd_estimate(), # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10),
-    lower = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random rate CG parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_rate_cg_param <- function() {
-  beautier::create_rate_cg_param( # nolint internal function
-    estimate = create_rnd_estimate(), # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10),
-    lower = stats::runif(n = 1, min = -10, max = 10)
-  )
-
-}
-
-#' Create a random rate CT parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_rate_ct_param <- function() {
-  beautier::create_rate_ct_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10),
-    lower = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random rate GT parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_rate_gt_param <- function() {
-  beautier::create_rate_gt_param( # nolint internal function
-    estimate = create_rnd_estimate(), # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10),
-    lower = stats::runif(n = 1, min = -10, max = 10)
   )
 }
 
@@ -523,51 +356,6 @@ create_rnd_rln_clock_model <- function() {
     n_rate_categories = sample(x = -2:10, size = 1),
     normalize_mean_clock_rate = create_rnd_bool() # nolint internal function
   )
-}
-
-#' Create a random s parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_s_param <- function() {
-  lower <- stats::runif(n = 1, min = -10, max = 10)
-  value <- lower + stats::runif(n = 1, min = 0.1, max = 10)
-  upper <- value + stats::runif(n = 1, min = 0.1, max = 10)
-  testit::assert(lower < value)
-  testit::assert(value < upper)
-  beautier::create_s_param( # nolint internal function
-    value = value,
-    lower = lower,
-    upper = upper
-  )
-}
-
-#' Create a random scale parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_scale_param <- function() {
-  beautier::create_scale_param( # nolint internal function
-    value = stats::runif(n = 1, min = -10, max = 10)
-  )
-}
-
-#' Create a random sigma parameter
-#' @author Richel J.C. Bilderbeek
-create_rnd_sigma_param <- function() {
-  sigma_param <- NA
-  while (beautier::is_one_na(sigma_param)) { # nolint internal function
-    tryCatch(
-      sigma_param <- beautier::create_sigma_param( # nolint internal function
-        value = stats::runif(n = 1, min = -10, max = 10)
-      ),
-      error = function(error) {
-        whitelist <- c(
-          "'value' must be non-zero and positive"
-        )
-        testit::assert(
-          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
-        )
-      }
-    )
-  }
-  sigma_param
 }
 
 #' Create a random site model

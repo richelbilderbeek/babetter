@@ -10,5 +10,5 @@ test_that("use", {
       )
     )
   )
-  expect_true(are_beast2_input_lines_deep(text))
+  expect_true(beastier::are_beast2_input_lines_deep(text))
 })
