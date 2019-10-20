@@ -704,7 +704,7 @@ create_rnd_inference_model <- function(fasta_filename) {
   site_model <- create_rnd_site_model()
   clock_model <- create_rnd_clock_model()
   tree_prior <- create_rnd_tree_prior()
-  mrca_prior <- create_rnd_mrca_priors(input_filename)
+  mrca_prior <- create_rnd_mrca_priors(fasta_filename)
   mcmc <- create_rnd_mcmc()
 
   beautier::create_inference_model(
