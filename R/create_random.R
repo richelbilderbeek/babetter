@@ -314,11 +314,9 @@ create_rnd_mrca_priors <- function(fasta_filename) {
   param_index <- sample(x = 1:2, size = 1)
   if (param_index == 1) {
     NA
-  } else if (param_index == 2) {
-    create_rnd_mrca_prior(fasta_filename) # nolint internal function
   } else {
-    testit::assert(param_index == 3)
-    create_rnd_two_mrca_priors(fasta_filename) # nolint internal function
+    testit::assert(param_index == 2)
+    create_rnd_mrca_prior(fasta_filename) # nolint internal function
   }
 }
 
@@ -475,7 +473,8 @@ create_rnd_mcmc <- function() {
           chain_length = create_rnd_mcmc_chain_length(),
           store_every = create_rnd_mcmc_store_every(),
           pre_burnin = create_rnd_mcmc_pre_burnin(),
-          n_init_attempts = sample(x = -1:100, size = 1)
+          n_init_attempts = sample(x = -1:100, size = 1),
+          sample_from_prior = create_rnd_bool()
         )
       )
     }, error = function(e) {} # nolint indeed ignore
