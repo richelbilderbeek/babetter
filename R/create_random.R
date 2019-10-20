@@ -658,3 +658,60 @@ create_rnd_yule_tree_prior <- function() {
     birth_rate_distr = create_rnd_distr() # nolint internal function
   )
 }
+
+#' Create a random MCMC chain length
+#' @export
+create_rnd_mcmc_chain_length <- function() {
+  sample(x = c(1e3, 1e4, 1e5, 1e6, 1e7), size = 1)
+}
+
+#' Create a random MCMC store interval
+#' @export
+create_rnd_mcmc_store_every <- function() {
+  sample(x = c(-1, NA, 1e3, 1e4, 1e5, 1e6, 1e7), size = 1)
+}
+
+#' Create a random MCMC pre-burnin
+#' @export
+create_rnd_mcmc_pre_burnin <- function() {
+  sample(x = c(0, 1e3, 1e4, 1e5, 1e6, 1e7), size = 1)
+}
+
+
+#' Create a random MCMC
+#' @export
+create_rnd_mcmc <- function() {
+  while (1) {
+    tryCatch({
+      return(
+        beautier::create_mcmc(
+          chain_length = create_rnd_mcmc_chain_length(),
+          store_every = create_rnd_mcmc_store_every(),
+          pre_burnin = create_rnd_mcmc_pre_burnin()
+        )
+      )
+    }, error = function(e) {} # nolint indeed ignore
+    )
+  }
+}
+
+#' Create a random inference model
+#' @param fasta_filename a FASTA filename
+#'
+#' @export
+create_rnd_inference_model <- function(fasta_filename) {
+
+  site_model <- create_rnd_site_model()
+  clock_model <- create_rnd_clock_model()
+  tree_prior <- create_rnd_tree_prior()
+  mrca_prior <- create_rnd_mrca_priors(input_filename)
+  mcmc <- create_rnd_mcmc()
+
+  beautier::create_inference_model(
+    site_model = site_model,
+    clock_model = clock_model,
+    tree_prior = tree_prior,
+    mrca_prior = mrca_prior,
+    mcmc = mcmc
+  )
+}

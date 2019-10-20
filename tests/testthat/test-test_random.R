@@ -5,18 +5,12 @@ create_random <- function(
 ) {
   input_filename <- beautier::get_beautier_path("anthus_aco.fas")
   output_xml_filename <- tempfile()
-  site_model <- create_rnd_site_model()
-  clock_model <- create_rnd_clock_model()
-  tree_prior <- create_rnd_tree_prior()
-  mrca_priors <- create_rnd_mrca_priors(input_filename)
+  inference_model <- create_rnd_inference_model(input_filename)
 
-  beautier::create_beast2_input_file(
+  beautier::create_beast2_input_file_from_model(
     input_filename = input_filename,
-    output_filename = output_xml_filename,
-    site_model = site_model,
-    clock_model = clock_model,
-    tree_prior = tree_prior,
-    mrca_prior = mrca_priors
+    inference_model = inference_model,
+    output_filename = output_xml_filename
   )
   is_ok <- beastier::is_beast2_input_file(
     output_xml_filename,
@@ -26,22 +20,8 @@ create_random <- function(
     print("ERROR")
     file.copy(output_xml_filename, "~/bad.xml", overwrite = TRUE)
     beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
-    print("site model:")
-    print(site_model)
-    print("clock model:")
-    print(clock_model)
-    print("tree prior:")
-    print(tree_prior)
-    print("mrca priors:")
-    print(mrca_priors)
-    print("site model$name:")
-    print(site_model$name)
-    print("clock model$name:")
-    print(clock_model$name)
-    print("tree prior$name:")
-    print(tree_prior$name)
-    print("length(mrca priors):")
-    print(length(mrca_priors))
+    print("site inference_model:")
+    print(inference_model)
   }
   is_ok
 }
