@@ -350,7 +350,8 @@ create_rnd_mrca_prior <- function(fasta_filename) {
 #' @param fasta_filename a FASTA filename
 #' @author Richel J.C. Bilderbeek
 create_rnd_mrca_priors <- function(fasta_filename) {
-  param_index <- sample(x = 1:3, size = 1)
+  # Only support none or one MRCA prior for now
+  param_index <- sample(x = 1:2, size = 1)
   if (param_index == 1) {
     NA
   } else if (param_index == 2) {
