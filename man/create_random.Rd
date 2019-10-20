@@ -7,6 +7,9 @@
 
   create_random(input_fasta_filename = beautier::get_beautier_path("anthus_aco.fas"))
 }
+\arguments{
+\item{input_fasta_filename}{name of a FASTA filename}
+}
 \description{
 Creates a random BEAST2 setup to validate
 }

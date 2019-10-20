@@ -1,4 +1,5 @@
 #' Creates a random BEAST2 setup to validate
+#' @param input_fasta_filename name of a FASTA filename
 #' @export
 create_random <- function(
   input_fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
