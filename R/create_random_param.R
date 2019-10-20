@@ -214,7 +214,7 @@ create_rnd_sigma_param <- function() {
           "'value' must be non-zero and positive"
         )
         testit::assert(
-          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
+          beautier::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )

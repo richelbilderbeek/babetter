@@ -51,7 +51,7 @@ create_rnd_beta_distr <- function() {
           "'beta' must have a value of at least 1.0"
         )
         testit::assert(
-          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
+          beautier::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -169,7 +169,7 @@ create_rnd_gamma_distr <- function() {
           "'value' of 'beta' must be positive"
         )
         testit::assert(
-          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
+          beautier::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -198,7 +198,7 @@ create_rnd_gamma_site_model <- function() {
           "'gamma_shape_prior_distr' must be NA for a 'gamma_cat_count' of less than two" # nolint indeed long error message, preferred this over using paste0
         )
         testit::assert(
-          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
+          beautier::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -280,7 +280,7 @@ create_rnd_log_normal_distr <- function() {
           "'value' of 's' must be positive"
         )
         testit::assert(
-          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
+          beautier::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
@@ -431,7 +431,7 @@ create_rnd_uniform_distr <- function() {
           "'upper' must be non-zero and positive"
         )
         testit::assert(
-          beautier:::is_in_patterns(line = error$message, patterns = whitelist)
+          beautier::is_in_patterns(line = error$message, patterns = whitelist)
         )
       }
     )
