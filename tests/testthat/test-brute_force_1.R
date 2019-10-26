@@ -13,12 +13,15 @@ test_that("all combinations", {
       for (tree_prior in beautier::create_tree_priors()) {
         if (runif(n = 1) > 0.1) next
         output_xml_filename <- tempfile()
-        beautier::create_beast2_input_file(
-          input_filename = input_fasta_filename,
-          output_filename = output_xml_filename,
+        inference_model <- beautier::create_test_inference_model(
           site_model = site_model,
           clock_model = clock_model,
           tree_prior = tree_prior
+        )
+        beautier::create_beast2_input_file_from_model(
+          input_filename = input_fasta_filename,
+          output_filename = output_xml_filename,
+          inference_model = inference_model
         )
         is_ok <- beastier::is_beast2_input_file(
           output_xml_filename,
@@ -55,13 +58,16 @@ test_that("monophyletic MRCA prior with distr", {
 
         is_valid <- FALSE
         tryCatch({
-          beautier::create_beast2_input_file(
-            input_filename = input_fasta_filename,
-            output_filename = output_xml_filename,
+          inference_model <- beautier::create_test_inference_model(
             site_model = site_model,
             clock_model = clock_model,
             tree_prior = tree_prior,
             mrca_prior = mrca_prior
+          )
+          beautier::create_beast2_input_file_from_model(
+            input_filename = input_fasta_filename,
+            output_filename = output_xml_filename,
+            inference_model = inference_model
           )
           is_valid <- TRUE
           }, error = function(e) {} # nolint indeed ignore the error
