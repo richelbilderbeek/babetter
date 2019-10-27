@@ -14,7 +14,7 @@ r_github_packages:
   - KlausVigo/phangorn
   - ropensci/beautier@develop
   - ropensci/beastier@develop
-  - ropensci/mauricer
+  - ropensci/mauricer@develop
   - ropensci/babette@develop
   - MangoTheCat/goodpractice
   - ropensci/spelling
