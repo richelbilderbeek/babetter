@@ -12,9 +12,9 @@ r_github_packages:
   - jimhester/covr
   - jimhester/lintr
   - KlausVigo/phangorn
-  - ropensci/beautier@develop
-  - ropensci/beastier@develop
-  - ropensci/mauricer@develop
+  - ropensci/beautier
+  - ropensci/beastier
+  - ropensci/mauricer
   - ropensci/babette@develop
   - MangoTheCat/goodpractice
   - ropensci/spelling
