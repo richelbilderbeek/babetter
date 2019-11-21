@@ -193,11 +193,14 @@ create_rnd_gamma_site_model <- function() {
       ),
       error = function(error) {
         whitelist <- c(
-          "'gamma_cat_count' must be positive",
-          "'gamma_shape' must be positive",
-          "'prop_invariant' must be in range \\[0\\.0, 1\\.0\\]",
+          "'gamma_cat_count' must be zero or positive",
+          "'gamma_shape' must be zero or positive",
+          "'prop_invariant' must at least be zero",
           "'gamma_shape_prior_distr' must be NA for a 'gamma_cat_count' of less than two" # nolint indeed long error message, preferred this over using paste0
         )
+        if (!beautier::is_in_patterns(line = error$message, patterns = whitelist)) {
+          stop(error$message)
+        }
         testit::assert(
           beautier::is_in_patterns(line = error$message, patterns = whitelist)
         )
