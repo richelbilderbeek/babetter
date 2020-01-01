@@ -105,18 +105,16 @@ create_random_nonsense <- function(
           site_model = site_model,
           clock_model = clock_model,
           tree_prior = tree_prior,
-          mrca_prior = mrca_prior,
-          posterior_crown_age = create_rnd_crown_age()
+          mrca_prior = mrca_prior
         )
         done <- TRUE
       },
     error = function(error) {
         whitelist <- c(
-          "'clock_models' must be a valid clock model",
-          "'tree_priors' must be a valid tree prior",
-          "'site_models' must be a valid site model",
-          "'mrca_priors' must be NA or a valid mrca object",
-          "'posterior_crown_age' must be either NA or a non-zero postive value"
+          "'clock_model' must be a valid clock model",
+          "'tree_prior' must be a valid tree prior",
+          "'site_model' must be a valid site model",
+          "'mrca_prior' must be a valid MRCA prior"
         )
         if (!beautier::is_in_patterns(line = error$message, patterns = whitelist)) {
           print("ERROR:")
@@ -141,7 +139,6 @@ create_random_nonsense <- function(
 
 test_that("use", {
 
-  skip("WIP")
   seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
   set.seed(seed)
 

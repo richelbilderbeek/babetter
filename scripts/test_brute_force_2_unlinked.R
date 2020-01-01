@@ -49,8 +49,7 @@ test_that("all combinations, 2 model, unlinked", {
               site_models = list(site_model_1, site_model_2),
               clock_models = list(clock_model_1, clock_model_2),
               tree_priors = list(tree_prior, tree_prior),
-              output_filename = output_filename,
-              posterior_crown_age = 15
+              output_filename = output_filename
             )
             is_ok <- beastier::is_beast2_input_file(output_filename)
             if (!is_ok) {

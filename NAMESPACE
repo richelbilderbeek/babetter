@@ -2,6 +2,8 @@
 
 export(create_random)
 export(create_rnd_bool)
+export(create_rnd_clock_model)
+export(create_rnd_gamma_site_model)
 export(create_rnd_inference_model)
 export(create_rnd_mcmc)
 export(create_rnd_mcmc_chain_length)

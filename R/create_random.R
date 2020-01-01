@@ -92,6 +92,7 @@ create_rnd_cep_tree_prior <- function() {
 
 #' Create a random clock model
 #' @author Richel J.C. Bilderbeek
+#' @export
 create_rnd_clock_model <- function() {
   clock_model_index <- sample(x = 1:2, size = 1)
   if (clock_model_index == 1) {
@@ -180,6 +181,7 @@ create_rnd_gamma_distr <- function() {
 
 #' Create a random gamma site model
 #' @author Richel J.C. Bilderbeek
+#' @export
 create_rnd_gamma_site_model <- function() {
   gamma_site_model <- NA
   while (beautier::is_one_na(gamma_site_model)) {
