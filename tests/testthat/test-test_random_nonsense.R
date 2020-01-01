@@ -111,7 +111,7 @@ test_that("use", {
   set.seed(seed)
 
   # 1 attempts per minute, use 1 minute
-  for (i in seq(1, 1 * 1)) {
+  for (i in seq(1, 100)) {
     set.seed(i + 4)
     print(i)
     ok <- create_random_nonsense()
