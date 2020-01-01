@@ -38,45 +38,13 @@ create_rnd_anything <- function(
   }
 }
 
-create_rnd_site_model_nasty <- function() {
-  if (create_rnd_bool()) {
-    create_rnd_site_model()
-  } else {
-    create_rnd_anything()
-  }
-}
-
-create_rnd_clock_model_nasty <- function() {
-  if (create_rnd_bool()) {
-    create_rnd_clock_model()
-  } else {
-    create_rnd_anything()
-  }
-}
-
-create_rnd_tree_prior_nasty <- function() {
-  if (create_rnd_bool()) {
-    create_rnd_tree_prior()
-  } else {
-    create_rnd_anything()
-  }
-}
-
-create_rnd_mrca_prior_nasty <- function(
-  fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
-) {
-  if (create_rnd_bool()) {
-    create_rnd_mrca_prior(fasta_filename)
-  } else {
-    create_rnd_anything()
-  }
-}
-
 create_rnd_crown_age <- function() {
   values <- c(-1, 0, 1, 15, NA)
   sample(x = values, size = 1)
 }
 
+
+#' Tries hard to creates one random BEAST2 input file
 create_random_nonsense <- function(
   input_fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
 ) {
@@ -107,7 +75,7 @@ create_random_nonsense <- function(
           tree_prior = tree_prior,
           mrca_prior = mrca_prior
         )
-        done <- TRUE
+        return(TRUE)
       },
     error = function(error) {
         whitelist <- c(
