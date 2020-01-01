@@ -8,6 +8,9 @@ create_rnd_anything(
   fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
 )
 }
+\arguments{
+\item{fasta_filename}{a FASTA filename}
+}
 \description{
 Creates something
 }

@@ -1,4 +1,5 @@
 #' Creates something
+#' @param fasta_filename a FASTA filename
 #' @export
 create_rnd_anything <- function(
   fasta_filename = beautier::get_beautier_path("anthus_aco.fas")

@@ -1,4 +1,5 @@
 #' May create a random MRCA prior
+#' @param fasta_filename a FASTA filename
 #' @export
 create_rnd_mrca_prior_nasty <- function(
   fasta_filename = beautier::get_beautier_path("anthus_aco.fas")
