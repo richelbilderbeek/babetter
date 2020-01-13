@@ -2,11 +2,13 @@ language: r
 dist: bionic
 cache: packages
 
+# Use bleeding-edge version of babette
 r_github_packages:
-  - jimhester/covr
-  - jimhester/lintr
-  - MangoTheCat/goodpractice
-  - ropensci/spelling
+  - ropensci/beautier
+  - ropensci/tracerer
+  - ropensci/beastier
+  - ropensci/mauricer
+  - ropensci/babette
 
 before_script:
   - # if Linux, show distro
