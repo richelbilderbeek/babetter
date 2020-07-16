@@ -10,7 +10,6 @@ r_github_packages:
   - ropensci/mauricer
   - ropensci/babette
 
-
 before_script:
   - # if Linux, show distro
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat /proc/version; fi
@@ -19,3 +18,4 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then R --quiet -e 'install.packages("rJava", type="source", repos="http://cran.us.r-project.org")'; fi
   - # BEAST2
   - Rscript -e "beastier::install_beast2()"
+
