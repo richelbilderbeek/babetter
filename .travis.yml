@@ -19,3 +19,11 @@ before_script:
   - # BEAST2
   - Rscript -e "beastier::install_beast2()"
 
+after_failure:
+  # Download thesis
+  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
+
+after_success:
+  # Download thesis
+  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
+
