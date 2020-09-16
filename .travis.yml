@@ -10,6 +10,10 @@ r_github_packages:
   - ropensci/mauricer
   - ropensci/babette
 
+before_install:
+  # Fix rJava error, from https://travis-ci.community/t/cannot-connect-to-java-from-r/9754/8
+  - sudo $(which R) CMD javareconf
+
 before_script:
   - # if Linux, show distro
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat /proc/version; fi
