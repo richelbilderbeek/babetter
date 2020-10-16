@@ -15,7 +15,7 @@ License: GPL-3 | file LICENSE
 LazyData: true
 RoxygenNote: 7.0.2
 VignetteBuilder: knitr
-URL: https://github.com/ropensci/babetter
+URL: https://github.com/ropensci/babetter/
 BugReports: https://github.com/ropensci/babetter/issues
 Imports:
     babette,
