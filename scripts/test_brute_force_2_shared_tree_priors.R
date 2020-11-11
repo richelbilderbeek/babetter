@@ -21,7 +21,7 @@ for (site_model_1 in beautier::create_site_models()) {
             tree_priors = list(tree_prior, tree_prior)
           )
           if (!beastier::are_beast2_input_lines(lines)) {
-            print(
+            message(
               paste(
                 site_model_1$name,
                 site_model_2$name,

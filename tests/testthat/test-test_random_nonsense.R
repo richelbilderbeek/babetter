@@ -47,19 +47,19 @@ create_random_nonsense <- function(
           "'mrca_prior' must be a valid MRCA prior"
         )
         if (!beautier::is_in_patterns(line = error$message, patterns = whitelist)) {
-          print("ERROR:")
-          print(error$message)
-          print("Not found in the whitelist")
-          print("FULL ERROR:")
+          message("ERROR:")
+          message(error$message)
+          message("Not found in the whitelist")
+          message("FULL ERROR:")
           beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
-          print("site model:")
-          print(site_model)
-          print("clock model:")
-          print(clock_model)
-          print("tree prior:")
-          print(tree_prior)
-          print("mrca prior:")
-          print(mrca_prior)
+          message("site model:")
+          message(site_model)
+          message("clock model:")
+          message(clock_model)
+          message("tree prior:")
+          message(tree_prior)
+          message("mrca prior:")
+          message(mrca_prior)
           return(FALSE)
         }
       }
@@ -75,10 +75,10 @@ test_that("use", {
   # 1 attempts per minute, use 1 minute
   for (i in seq(1, 100)) {
     set.seed(i + 4)
-    print(i)
+    message(i)
     ok <- create_random_nonsense()
     if (ok == FALSE) {
-      print(paste("seed:", seed))
+      message(paste("seed:", seed))
     }
     expect_true(ok)
   }

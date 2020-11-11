@@ -17,11 +17,11 @@ create_random <- function(
     show_warnings = TRUE
   )
   if (!is_ok) {
-    print("ERROR")
+    message("ERROR")
     file.copy(output_xml_filename, "~/bad.xml", overwrite = TRUE)
     beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
-    print("site inference_model:")
-    print(inference_model)
+    message("site inference_model:")
+    message(inference_model)
   }
   is_ok
 }

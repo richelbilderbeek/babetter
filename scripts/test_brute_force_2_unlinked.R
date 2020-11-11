@@ -23,7 +23,7 @@ test_that("all combinations, 2 model, unlinked", {
             )
             is_ok <- beastier::is_beast2_input_file(output_filename)
             if (!is_ok) {
-              print(paste(site_model_1$name, site_model_2$name,
+              message(paste(site_model_1$name, site_model_2$name,
                 clock_model_1$name, clock_model_2$name, tree_prior$name))
               beautier::is_beast2_input_file(output_filename,
                 verbose = TRUE)
@@ -53,7 +53,7 @@ test_that("all combinations, 2 model, unlinked", {
             )
             is_ok <- beastier::is_beast2_input_file(output_filename)
             if (!is_ok) {
-              print(paste(site_model_1$name, site_model_2$name,
+              message(paste(site_model_1$name, site_model_2$name,
                 clock_model_1$name, clock_model_2$name, tree_prior$name))
               beautier::is_beast2_input_file(output_filename,
                 verbose = TRUE)

@@ -28,7 +28,7 @@ test_that("all combinations", {
           show_warnings = TRUE
         )
         if (!is_ok) {
-          print(paste(site_model$name, clock_model$name, tree_prior$name))
+          message(paste(site_model$name, clock_model$name, tree_prior$name))
           beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
         }
         testthat::expect_true(is_ok)
@@ -79,7 +79,7 @@ test_that("monophyletic MRCA prior with distr", {
           show_warnings = TRUE
         )
         if (!is_ok) {
-          print(paste(site_model$name, clock_model$name, tree_prior$name))
+          message(paste(site_model$name, clock_model$name, tree_prior$name))
           beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
         }
         testthat::expect_true(is_ok)
@@ -127,7 +127,7 @@ test_that("non-monophyletic MRCA prior with distr", {
           show_warnings = TRUE
         )
         if (!is_ok) {
-          print(paste(site_model$name, clock_model$name, tree_prior$name))
+          message(paste(site_model$name, clock_model$name, tree_prior$name))
           beastier::is_beast2_input_file(output_xml_filename, verbose = TRUE)
         }
         testthat::expect_true(is_ok)

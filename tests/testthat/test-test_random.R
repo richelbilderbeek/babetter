@@ -10,7 +10,7 @@ test_that("use", {
     seed <- as.integer((as.double(Sys.time())*1000 + Sys.getpid()) %% 2^31)
     set.seed(seed)
 
-    print(i)
+    message(i)
     ok <- FALSE
     tryCatch(
       {
@@ -19,7 +19,7 @@ test_that("use", {
       error = function(e) {} # nolint indeed ignore
     )
     if (ok != TRUE) {
-      print(paste("seed:", seed))
+      message(paste("seed:", seed))
     }
     # expect_true(ok)
   }
