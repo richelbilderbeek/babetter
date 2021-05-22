@@ -12,7 +12,6 @@ Description: 'babette' (<https://github.com/ropensci/babette>)
   as well. This package tests 'babette' under a wide range of options,
   that are too time-consuming to add to the 'babette' tests. 
 License: GPL-3 | file LICENSE
-LazyData: true
 RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 URL: https://github.com/ropensci/babetter/
